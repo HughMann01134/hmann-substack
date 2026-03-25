@@ -1,2 +1,2 @@
-# Scripts
-Scripts and automation tools referenced in Hugh's Substack articles.
+# Installation Guides
+Step-by-step installation and configuration guides from Hugh's Substack articles.
