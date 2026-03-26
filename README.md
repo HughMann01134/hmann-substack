@@ -9,7 +9,7 @@ material referenced in [Hugh's Substack](https://hmann.substack.com).
 |---|---|
 | `/scripts` | Tools and automation scripts from articles |
 | `/malware-analysis` | Analysis notes, reports, and sample archives |
-| `/installation-guides` | Step-by-step setup guides in Markdown |
+| `/installation-guides` | Step-by-step setup guides — see subfolders by category |
 | `/iocs` | Indicators of Compromise — hashes, IPs, domains, YARA rules |
 
 ## ⚠️ Disclaimer
