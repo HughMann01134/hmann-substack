@@ -223,3 +223,11 @@ The `set -e` directive is important — it ensures the script stops immediately 
 | `exit` | Stops the `script` recording |
 
 This two-layer approach gives you everything you need to reproduce an installation reliably — a clean command list to script from, and a full output log to troubleshoot against.
+
+---
+
+## Script
+
+A ready-to-run script for this guide is available in the scripts directory:
+
+- [`setup-terminal-logging.sh`](../../scripts/linux-tools/setup-terminal-logging.sh)
