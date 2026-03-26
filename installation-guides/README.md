@@ -1,13 +1,22 @@
-# Installation Guides
+# Hugh's Substack — Technical Companion Repo
 
-Step-by-step installation and configuration guides from Hugh's Substack articles.
+This repository contains all technical files, scripts, and supplementary 
+material referenced in [Hugh's Substack](https://hmann.substack.com).
 
----
+## 📁 Contents
 
-## Index
-
-| Guide | Description |
+| Folder | What's inside |
 |---|---|
-| [Logging Your Terminal Session for Reproducible Install Scripts](./logging-your-terminal-session.md) | How to automatically log every command you run using `PROMPT_COMMAND` and `script` so you can reproduce or script an installation later. |
+| `/scripts` | Tools and automation scripts from articles |
+| `/malware-analysis` | Analysis notes, reports, and sample archives |
+| `/installation-guides` | Step-by-step setup guides — see subfolders by category |
+| `/iocs` | Indicators of Compromise — hashes, IPs, domains, YARA rules |
 
+## ⚠️ Disclaimer
 
+Malware samples are provided **strictly for educational and research purposes**.
+Samples are stored in password-protected archives. Password: `infected`
+The author takes no responsibility for misuse of any materials in this repository.
+
+## 📰 Newsletter
+Subscribe at [hmann.substack.com](https://hmann.substack.com)
