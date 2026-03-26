@@ -1,22 +1,24 @@
-# Hugh's Substack — Technical Companion Repo
+# Installation Guides
 
-This repository contains all technical files, scripts, and supplementary 
-material referenced in [Hugh's Substack](https://hmann.substack.com).
+Supplementary installation and configuration detail for guides published on
+[Hugh's Substack](https://hmann.substack.com). Each article links here for
+additional technical depth.
 
-## 📁 Contents
+---
 
-| Folder | What's inside |
+## Categories
+
+| Category | Description |
 |---|---|
-| `/scripts` | Tools and automation scripts from articles |
-| `/malware-analysis` | Analysis notes, reports, and sample archives |
-| `/installation-guides` | Step-by-step setup guides — see subfolders by category |
-| `/iocs` | Indicators of Compromise — hashes, IPs, domains, YARA rules |
+| [Linux Tools & Utilities](./linux-tools/) | Bash techniques, system utilities, and general Linux tooling |
+| [SIEMs & Logging](./siems-and-logging/) | Log management, SIEM platforms, and pipeline configuration |
+| [Forensics & Malware Analysis](./forensics-and-malware/) | Forensic utilities, sandboxes, and analysis environments |
+| [Networking & Capture](./networking-and-capture/) | Packet capture, traffic analysis, and network monitoring tools |
 
-## ⚠️ Disclaimer
+---
 
-Malware samples are provided **strictly for educational and research purposes**.
-Samples are stored in password-protected archives. Password: `infected`
-The author takes no responsibility for misuse of any materials in this repository.
+## All Guides
 
-## 📰 Newsletter
-Subscribe at [hmann.substack.com](https://hmann.substack.com)
+| Guide | Category | Description |
+|---|---|---|
+| [Logging Your Terminal Session](./linux-tools/logging-your-terminal-session.md) | Linux Tools | Auto-log commands and output for reproducible install scripts |
