@@ -1,0 +1,90 @@
+---
+- name: Gold Image
+  hosts: local
+  become: yes
+
+  tasks:
+    - name: Install baseline packages
+      apt:
+        name:
+          - curl
+          - wget
+          - vim
+          - htop
+          - net-tools
+          - unzip
+          - ca-certificates
+          - git
+          - ufw
+        state: present
+        update_cache: yes
+
+    - name: SSH hardening
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: "{{ item.regexp }}"
+        line: "{{ item.line }}"
+        state: present
+      loop:
+        - { regexp: '^#?PermitRootLogin', line: 'PermitRootLogin no' }
+        - { regexp: '^#?PasswordAuthentication', line: 'PasswordAuthentication no' }
+        - { regexp: '^#?MaxAuthTries', line: 'MaxAuthTries 3' }
+        - { regexp: '^#?LoginGraceTime', line: 'LoginGraceTime 20' }
+        - { regexp: '^#?X11Forwarding', line: 'X11Forwarding no' }
+      notify: Restart SSH
+
+    - name: Configure UFW defaults
+      ufw:
+        direction: "{{ item.direction }}"
+        policy: "{{ item.policy }}"
+      loop:
+        - { direction: 'incoming', policy: 'deny' }
+        - { direction: 'outgoing', policy: 'allow' }
+
+    - name: Allow SSH through UFW
+      ufw:
+        rule: allow
+        name: OpenSSH
+
+    - name: Enable UFW
+      ufw:
+        state: enabled
+
+    - name: Install unattended-upgrades
+      apt:
+        name: unattended-upgrades
+        state: present
+
+    - name: Enable unattended-upgrades
+      lineinfile:
+        path: /etc/apt/apt.conf.d/20auto-upgrades
+        line: "{{ item }}"
+        create: yes
+      loop:
+        - 'APT::Periodic::Update-Package-Lists "1";'
+        - 'APT::Periodic::Unattended-Upgrade "1";'
+
+    - name: Disable automatic reboot
+      lineinfile:
+        path: /etc/apt/apt.conf.d/50unattended-upgrades
+        regexp: '^//Unattended-Upgrade::Automatic-Reboot '
+        line: 'Unattended-Upgrade::Automatic-Reboot "false";'
+
+    - name: Set timezone to UTC
+      timezone:
+        name: UTC
+
+    - name: Disable snapd
+      systemd:
+        name: snapd
+        state: stopped
+        enabled: no
+        masked: yes
+
+  handlers:
+    - name: Restart SSH
+      service:
+        name: ssh
+        state: restarted
+
+
